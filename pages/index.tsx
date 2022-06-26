@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { ContextState } from '../components/context/ContextMain'
 import { useContext, useEffect } from 'react';
 import BankRow from '../components/BankComponent/BankRow';
+import RealStateRow from '../components/RealStateComponent/RealStateRow';
 
 const Home: NextPage = () => {
   const Ctx = useContext(ContextState);
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
   return (
     <>
       <BankRow />
+      <RealStateRow />
     </>
   )
 }

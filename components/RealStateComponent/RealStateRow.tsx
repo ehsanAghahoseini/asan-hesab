@@ -4,12 +4,12 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 import RowComponent from "../layout/RowComponent";
 
-const BankRow: any = () => {
+const RealStateRow: any = () => {
     return (
         <>
-            <RowComponent title="محاسبات بانکی" />
+            <RowComponent title="محاسبات املاک" />
         </>
     )
 }
 
-export default BankRow;
+export default RealStateRow;
