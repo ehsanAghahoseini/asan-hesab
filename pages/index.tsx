@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
 import { ContextState } from '../components/context/ContextMain'
 import { useContext, useEffect } from 'react';
-import BankRow from '../components/BankComponent/BankRow';
-import RealStateRow from '../components/RealStateComponent/RealStateRow';
+import RowComponent from '../components/layout/RowComponent';
+import Search from '../components/Search/Search';
+import MenuData from '../components/MenuData/MenuData';
 
 const Home: NextPage = () => {
   const Ctx = useContext(ContextState);
@@ -13,8 +14,9 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <BankRow />
-      <RealStateRow />
+      <Search />
+      <RowComponent title="محاسبات بانکی" listData={MenuData} filter='bank' />
+      <RowComponent title="محاسبات املاک" listData={MenuData} filter='realstate' />
     </>
   )
 }
