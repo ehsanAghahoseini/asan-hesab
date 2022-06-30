@@ -6,17 +6,12 @@ import Search from '../components/Search/Search';
 import MenuData from '../components/MenuData/MenuData';
 
 const Home: NextPage = () => {
-  const Ctx = useContext(ContextState);
-
-  useEffect(()=>{
-    Ctx.setHeadTitle('آسان حساب')
-  },[])
 
   return (
     <>
-      <Search />
-      <RowComponent title="محاسبات بانکی" listData={MenuData} filter='bank' />
-      <RowComponent title="محاسبات املاک" listData={MenuData} filter='realstate' />
+      {/* <Search /> */}
+      <RowComponent title="محاسبات بانکی" listData={MenuData} filter_key='category' filter_value='bank' />
+      <RowComponent title="محاسبات املاک" listData={MenuData}  filter_key='category' filter_value='realstate' />
     </>
   )
 }

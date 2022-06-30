@@ -18,7 +18,7 @@ const Header: any = () => {
                 {router.pathname != '/' &&
                     <div className="header-back">{">"}</div>
                 }
-                {Ctx.headTitle}
+                آسان حساب
             </div>
         </>
     )
