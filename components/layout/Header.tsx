@@ -15,10 +15,15 @@ const Header: any = () => {
             </Head>
 
             <div className="header">
-                {router.pathname != '/' &&
-                    <div className="header-back">{">"}</div>
-                }
-                آسان حساب
+                <span></span>
+                <span>
+                    آسان حساب
+                </span>
+                <span>
+                    {router.pathname != '/' &&
+                        <div className="header-back"></div>
+                    }
+                </span>
             </div>
         </>
     )
