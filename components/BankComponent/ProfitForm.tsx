@@ -1,71 +1,47 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import Input from "../widget/Input";
+import InputWhitSelect from "../widget/InputWhitSelect";
 
 const ProfitForm = () => {
-    const [formValue, setFormValue] = useState<any>({
-        'price': null,
-        'profit': null,
-        'typeDeposit': 0,
-        'period': null,
-        'period_type': null,
-    });
-
-    const handelFormValue = (key: any, value: any) => {
-        let data: any = { ...formValue };
-        data[key] = value;
-        setFormValue(data)
-    }
+    const formRef = useRef(null)
+    const [isComposite, setIsComposite] = useState<boolean>(false)
 
     const onFinishForm = (e: any) => {
         e.preventDefault();
-        console.log(e.target[2].value);
+        console.log(formRef.current['price'].value);
 
     }
 
     return (
-        <form onSubmit={onFinishForm} className="page-layout-form">
+        <form ref={formRef} onSubmit={onFinishForm} className="page-layout-form">
 
-            <div className="page-layout-form-item">
-                <span className="page-layout-form-item-title">مبلغ سپرده گذاری (تومان) </span>
-                <input value={formValue?.price} onChange={(e: any) => handelFormValue('price', parseInt(e.target.value))} className="page-layout-form-item-input" type={'number'} required />
-            </div>
+            <Input name="price" title="مبلغ سپرده گذاری (تومان)" type="number" required={true} />
 
-            <div className="page-layout-form-item">
-                <span className="page-layout-form-item-title">نرخ سود سالانه (%) </span>
-                <input value={formValue?.profit} onChange={(e: any) => handelFormValue('profit', parseInt(e.target.value))} className="page-layout-form-item-input" type={'number'} required />
-            </div>
+            <Input name="profit" title="نرخ سود سالانه (%)" type="number" required={true} />
 
             <div className="page-layout-form-item">
                 <span className="page-layout-form-item-title">نوع سپرده </span>
                 <div className="page-layout-form-item-radio">
                     <label>
                         <span>ساده</span>
-                        <input type={'radio'} onChange={() => handelFormValue('typeDeposit', 0)} name="typeDeposit" value={'simple'} checked={formValue?.typeDeposit == 0 && true} />
+                        <input type={'radio'} onChange={() => { setIsComposite(false) }} name="typeDeposit" value={'simple'} checked={isComposite == false && true} />
                     </label>
                     <label>
                         <span>مرکب</span>
-                        <input type={'radio'} onChange={() => handelFormValue('typeDeposit', 1)} name="typeDeposit" value={'composite'} checked={formValue?.typeDeposit == 1 && true} />
+                        <input type={'radio'} onChange={() => { setIsComposite(true) }} name="typeDeposit" value={'composite'} checked={isComposite && true} />
                     </label>
                 </div>
             </div>
 
-            {formValue?.typeDeposit == 1 &&
-                <div className="page-layout-form-item">
-                    <span className="page-layout-form-item-title">نرخ سود روی سود (%) </span>
-                    <input value={formValue?.depositProfit} onChange={(e: any) => handelFormValue('depositProfit', parseInt(e.target.value))} className="page-layout-form-item-input" type={'number'} required />
-                </div>
+            {isComposite &&
+                <Input name="Profit_on_profit" title="نرخ سود روی سود (%) " type="number" required={true} />
             }
 
-            <div className="page-layout-form-item">
-                <span className="page-layout-form-item-title">مدت سپرده </span>
-                <div className="page-layout-form-item-input-with-select">
-                    <input type={'number'} value={formValue?.period} onChange={(e: any) => handelFormValue('period', parseInt(e.target.value))} required />
-                    <select value={formValue?.period_type} onChange={(e: any) => handelFormValue('period_type', e.target.value)}>
-                        <option>روز</option>
-                        <option>ماه</option>
-                        <option>سال</option>
-                    </select>
-                </div>
-            </div>
+            <InputWhitSelect type="number" name='period' required={true} title={'مدت سپرده'} select_name='period_type' selecet_required={true}>
+                <option>روز</option>
+                <option>ماه</option>
+                <option>سال</option>
+            </InputWhitSelect>
 
             <button className="page-layout-form-submit">محاسبه</button>
 
