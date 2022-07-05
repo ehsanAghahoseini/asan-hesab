@@ -56,13 +56,14 @@ a {
 
 .main {
     width: 100%;
-    max-width: 640px;
+    max-width: 600px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px -1px rgba(0, 0, 0, .1);
     background: var(--gray-color);
     min-height: 100vh;
+    position: relative;
 }
 
 .container {
@@ -332,4 +333,156 @@ a {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+/* Style For Drower */
+
+.drower {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background: #ff345671; */
+    transition: all 0.5s;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    max-width: 600px;
+    margin: auto;
+    z-index: 1000;
+}
+
+.drower-active {
+    top: 0;
+    transition-delay: 0.4s;
+    /* transition: all 0.5s; */
+}
+
+.drower-cont {
+    min-height: 300px;
+    width: 100%;
+    padding: 0 20px 20px 20px;
+    display: flex;
+    border-radius: 40px 40px 0 0;
+    background: #fff;
+    flex-direction: column;
+}
+
+.drower-cont-head {
+    width: fit-content;
+    padding: 0 20px;
+    height: 40px;
+    background: var(--main-color);
+    color: #fff;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+}
+
+.drower-cont-inner {
+    margin-top: 25px;
+    width: 100%;
+    padding-top: 16px;
+    min-height: 50px;
+}
+
+.bg-drower {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 100%;
+    background: #f06a8c4d;
+    transition: all 0.3s;
+    z-index: 900;
+}
+
+.bg-drower-active {
+    top: 0;
+}
+
+.drower-close {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background: var(--main-color);
+    margin: 0 auto;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
+/* Style For Modal Result */
+
+.derower-result-one {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.derower-result-one-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.derower-result-one-btn-item {
+    padding: 0 10px;
+    min-width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    color: #fff;
+    background: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.derower-result-one-table {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid var(--gray-high);
+    margin-bottom: 50px;
+}
+
+.derower-result-one-table-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.derower-result-one-table-row-head {
+    width: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.derower-result-one-table-row-cont {
+    width: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid var(--gray-high);
 }

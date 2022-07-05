@@ -1,13 +1,14 @@
 
 
 export declare type InputProps = {
-    name:string ,
+    name: string,
     title: string,
     type: string,
     required?: boolean,
+    errorMessage?: string
 }
 
-const Input = ({name ,title , type , required}:InputProps) => {
+const Input = ({ name, title, type, required , errorMessage}: InputProps) => {
     return (
         <div className="page-layout-form-item">
             <span className="page-layout-form-item-title">{title}</span>
