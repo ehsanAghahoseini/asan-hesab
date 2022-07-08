@@ -21,7 +21,7 @@ const Header: any = () => {
                 </span>
                 <span>
                     {router.pathname != '/' &&
-                        <div className="header-back"></div>
+                        <div onClick={() => { history.back() }} className="header-back"></div>
                     }
                 </span>
             </div>

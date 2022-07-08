@@ -258,19 +258,44 @@ a {
     width: 100%;
     display: flex;
     flex-direction: column;
+    transition: all 0.3s;
 }
 
 .page-layout-form-item {
     display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    transition: all 0.3s;
+}
+
+.page-layout-form-item-show-value {
+    margin-right: 5px;
+    font-size: 15px;
+    color: #4b4b4b;
+    transition: all 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: -5px;
+}
+
+.page-layout-form-item-show-value-active {
+    transition: all 0.3s;
+    opacity: 1;
+    visibility: unset;
+    margin-top: unset;
+}
+
+.page-layout-form-item-section {
+    display: flex;
     position: relative;
-    height: 50px;
+    min-height: 50px;
     border-radius: 5px;
     align-items: center;
     border: 1px solid var(--gray-high);
-    margin-bottom: 30px;
+    margin-bottom: 3px;
 }
 
-.page-layout-form-item-title {
+.page-layout-form-item-section-title {
     font-size: 14px;
     color: var(--main-color);
     position: absolute;
@@ -280,7 +305,7 @@ a {
     padding: 0 10px;
 }
 
-.page-layout-form-item-input {
+.page-layout-form-item-section-input {
     width: 100%;
     height: 40px;
     border-radius: 5px;
@@ -288,31 +313,31 @@ a {
     padding: 0 10px;
 }
 
-.page-layout-form-item-radio {
+.page-layout-form-item-section-radio {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-.page-layout-form-item-radio label {
+.page-layout-form-item-section-radio label {
     cursor: pointer;
 }
 
-.page-layout-form-item-input-with-select {
+.page-layout-form-item-section-input-with-select {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-.page-layout-form-item-input-with-select input {
+.page-layout-form-item-section-input-with-select input {
     width: 100%;
     height: 40px;
     border: none;
     padding: 0 10px;
 }
 
-.page-layout-form-item-input-with-select select {
+.page-layout-form-item-section-input-with-select select {
     width: 65px;
     height: 30px;
     text-align: center;
@@ -332,6 +357,33 @@ a {
     /* margin-bottom: 10px; */
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* style for hepl form */
+
+.help-form {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
+    background: #fff;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    text-align: justify;
+    line-height: 28px;
+    transition: all 0.3s;
+}
+
+.help-form-title {
+    color: var(--main-color);
+    margin-left: 5px;
+}
+
+.help-form-more {
+    color: var(--main-color);
+    margin-right: 5px;
     cursor: pointer;
 }
 
@@ -459,6 +511,7 @@ a {
     overflow: hidden;
     border-radius: 5px;
     border: 1px solid var(--gray-high);
+    border-bottom: none;
     margin-bottom: 50px;
 }
 
@@ -466,6 +519,7 @@ a {
     width: 100%;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid var(--gray-high);
 }
 
 .derower-result-one-table-row-head {

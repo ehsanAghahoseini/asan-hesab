@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { commaFire } from "../widget/commaFire";
 import Drower from "../widget/Drower";
 import Input from "../widget/Input";
 import InputWhitSelect from "../widget/InputWhitSelect";
@@ -25,7 +26,7 @@ const ProfitForm = () => {
         if (period_type === 'year') {
             result = result * period * 365;
         }
-        setResult(+result.toFixed(3))
+        setResult(+result.toFixed(0))
         setVisibleResult(true)
 
     }
@@ -50,26 +51,28 @@ const ProfitForm = () => {
         <>
             <form ref={formRef} onSubmit={onFinishForm} className="page-layout-form">
 
-                <Input name="price" title="مبلغ سپرده گذاری (تومان)" type="number" required={true} />
+                <Input name="price" title="مبلغ سپرده گذاری (تومان)" type="number" unit="تومان" display_value={true} required={true} />
 
-                <Input name="profit" title="نرخ سود سالانه (%)" type="number" required={true} />
+                <Input name="profit" title="نرخ سود سالانه (%)" type="number" unit="درصد" display_value={true} required={true} />
 
                 <div className="page-layout-form-item">
-                    <span className="page-layout-form-item-title">نوع سپرده </span>
-                    <div className="page-layout-form-item-radio">
-                        <label>
-                            <span>ساده</span>
-                            <input type={'radio'} onChange={() => { setIsComposite(false) }} name="typeDeposit" value={'simple'} defaultChecked />
-                        </label>
-                        <label>
-                            <span>مرکب</span>
-                            <input type={'radio'} onChange={() => { setIsComposite(true) }} name="typeDeposit" value={'composite'} />
-                        </label>
+                    <div className="page-layout-form-item-section">
+                        <span className="page-layout-form-item-section-title">نوع سپرده </span>
+                        <div className="page-layout-form-item-section-radio">
+                            <label>
+                                <span>ساده</span>
+                                <input type={'radio'} onChange={() => { setIsComposite(false) }} name="typeDeposit" value={'simple'} defaultChecked />
+                            </label>
+                            <label>
+                                <span>مرکب</span>
+                                <input type={'radio'} onChange={() => { setIsComposite(true) }} name="typeDeposit" value={'composite'} />
+                            </label>
+                        </div>
                     </div>
                 </div>
 
                 {isComposite &&
-                    <Input name="Profit_on_profit" title="نرخ سود روی سود (%) " type="number" required={true} />
+                    <Input name="Profit_on_profit" title="نرخ سود روی سود (%) " type="number" unit="درصد" display_value={true} required={true} />
                 }
 
                 <InputWhitSelect type="number" name='period' required={true} title={'مدت سپرده'} select_name='period_type' selecet_required={true}>
@@ -86,12 +89,20 @@ const ProfitForm = () => {
                 <div className=" derower-result-one">
                     <div className="derower-result-one-table">
                         <div className="derower-result-one-table-row">
+                            <div className="derower-result-one-table-row-head">مبلغ سپرده </div>
+                            <div className="derower-result-one-table-row-cont">{formRef.current && commaFire(+formRef.current['price'].value)}</div>
+                        </div>
+                        <div className="derower-result-one-table-row">
+                            <div className="derower-result-one-table-row-head">درصد سود </div>
+                            <div className="derower-result-one-table-row-cont">{formRef?.current && +formRef?.current['profit'].value}</div>
+                        </div>
+                        <div className="derower-result-one-table-row">
                             <div className="derower-result-one-table-row-head">سود سپرده </div>
-                            <div className="derower-result-one-table-row-cont">{result}</div>
+                            <div className="derower-result-one-table-row-cont">{commaFire(result)}</div>
                         </div>
                     </div>
                     <div className="derower-result-one-btn">
-                        <div onClick={()=>{setVisibleResult(false)}} className="derower-result-one-btn-item">بستن</div>
+                        <div onClick={() => { setVisibleResult(false) }} className="derower-result-one-btn-item">بستن</div>
                     </div>
                 </div>
             </Drower>
